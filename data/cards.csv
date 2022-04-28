@@ -1,0 +1,29 @@
+ID,CLASS,TYPE,NAME,BASE_BUY_PRICE,RENT_PRICE,BUILD_PRICE
+1,Street,BROWN,Django,60,2,50
+2,Street,BROWN,Flask,60,4,50
+3,Street,LIGHT_BLUE,Dash,100,6,50
+4,Street,LIGHT_BLUE,MatPlotLib,100,6,50
+5,Street,LIGHT_BLUE,seaborn ,120,8,50
+6,Street,PINK,Fabric ,140,10,100
+7,Street,PINK,Ansible,140,10,100
+8,Street,PINK,Psutil,160,12,100
+9,Street,ORANGE,Black,180,14,100
+10,Street,ORANGE,coala ,180,14,100
+11,Street,ORANGE,pytype ,200,16,100
+12,Street,RED,pytest,220,18,150
+13,Street,RED,Selenium,220,18,150
+14,Street,RED,unittest,240,20,150
+15,Street,YELLOW,NumPy,260,22,150
+16,Street,YELLOW,Pandas,260,22,150
+17,Street,YELLOW,SciPy,280,24,150
+18,Street,GREEN,Arcade ,300,26,200
+19,Street,GREEN,PyOpenGL ,300,26,200
+20,Street,GREEN,Pygame ,320,28,200
+21,Street,DARK_BLUE,Scikit-learn,350,35,200
+22,Street,DARK_BLUE,TensorFlow,400,50,200
+23,Utility,N/A,Woda,150,4,10
+24,Utility,N/A,Prąd,150,4,10
+25,Company,N/A,Google,200,25,200
+26,Company,N/A,Spotify,200,25,200
+27,Company,N/A,Netflix,200,25,200
+28,Company,N/A,Reddit,200,25,200
