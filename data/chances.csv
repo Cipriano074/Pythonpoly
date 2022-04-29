@@ -1,4 +1,4 @@
-ID,TEXT,PRIZE
+chance_id,chance_text,chance_prize
 1,Wyjście z więzienia,free_jail
 2,Zapłać za obiad – 50 zł,pay_50
 3,Fundusz wyjazdowy + 250 zł,get_250
