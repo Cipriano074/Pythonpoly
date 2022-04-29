@@ -2,20 +2,13 @@
 
 import pygame
 
-import constants as c
-from board import Board
+from game import Game
 
 
 def run():
-    print("Running")
-
-    pygame.display.set_mode(c.SCREEN_SIZE)
-    pygame.display.set_caption(c.GAME_NAME)
-
-    board = Board(c.GAME_NAME)
-
-    while not board.end_game:
-        board.run()
+    print("Run")
+    game = Game()
+    game.run()
 
 
 if __name__ == '__main__':
