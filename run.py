@@ -1,15 +1,11 @@
 # triggering the project
-from cards.card import Card
+from cards import CardsList
 
 
 def run():
     print("Running")
-    get_cards()
-
-
-def get_cards():
-    card_test = Card(name="Siurek")
-    print(card_test)
+    cards_list = CardsList()
+    print(cards_list)
 
 
 if __name__ == '__main__':

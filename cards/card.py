@@ -4,8 +4,9 @@ from dataclasses import dataclass
 @dataclass
 class Card:
     card_id: int = None
-    name: str = "No name"
+    class_type: str = None
     card_type: str = None
+    name: str = "No name"
     basic_buy_price: int = 0
     rent_price: int = 0
     build_price: int = 0

@@ -1,4 +1,4 @@
-ID,CLASS,TYPE,NAME,BASE_BUY_PRICE,RENT_PRICE,BUILD_PRICE
+card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price
 1,Street,BROWN,Django,60,2,50
 2,Street,BROWN,Flask,60,4,50
 3,Street,LIGHT_BLUE,Dash,100,6,50
