@@ -13,16 +13,20 @@ class Card:
     __position: tuple = None
     __owner: int = None
 
-    def set_owner(self, new_owner: int):
+    @property
+    def owner(self, new_owner: int):
         self.__owner = new_owner
 
-    def set_position(self, new_position: tuple):
+    @property
+    def position(self, new_position: tuple):
         self.__position = new_position
 
-    def get_owner(self):
+    @owner.getter
+    def owner(self):
         return self.__owner
 
-    def get_position(self):
+    @position.getter
+    def position(self):
         return self.__position
 
     def __str__(self):
