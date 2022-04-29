@@ -1,0 +1,2 @@
+SCREEN_SIZE = (1280, 768)
+GAME_NAME = "Monopoly"
