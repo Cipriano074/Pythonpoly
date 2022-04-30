@@ -1,14 +1,18 @@
 import pygame
 
 from game import Board
+from game.gameState import GameState
 
 
 class Game:
     def __init__(self):
         pygame.init()
 
+        # Game state
+        self.game_state = GameState()
+
         # Graphics
-        self.board = Board()
+        self.board = Board(self.game_state)
 
         # Loop properties
         self.clock = pygame.time.Clock()
@@ -24,12 +28,12 @@ class Game:
                     self.running = False
                     break
                 elif event.key == pygame.K_UP:
-                    # Roll and show dice
-                    self.board.show_dice()
+                    # Set dice
+                    self.game_state.set_dice()
                     break
                 elif event.key == pygame.K_DOWN:
-                    # Hide and delete dice
-                    self.board.hide_dice()
+                    # Delete dice
+                    self.game_state.del_dice()
                     break
 
     def run(self):
