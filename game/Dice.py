@@ -2,6 +2,7 @@ import random
 
 import pygame
 from pygame import Vector2
+from pygame.rect import Rect
 
 
 class Dice:
@@ -19,3 +20,13 @@ class Dice:
         seq2 = ("./img/dice_", str(dice2_number), ".png")
 
         return pygame.image.load("".join(seq1)).convert(), pygame.image.load("".join(seq2)).convert()
+
+    def render_dice(self):
+        dice1_texture_rect = Rect(int(self.dice1Pos.x), int(self.dice1Pos.y),
+                                  int(self.cellSize.x),
+                                  int(self.cellSize.y))
+        dice2_texture_rect = Rect(int(self.dice2Pos.x), int(self.dice2Pos.y),
+                                  int(self.cellSize.x),
+                                  int(self.cellSize.y))
+
+        return (self.dice1Texture, dice1_texture_rect), (self.dice2Texture, dice2_texture_rect)

@@ -7,7 +7,7 @@ class Game:
     def __init__(self):
         pygame.init()
 
-        # Backgroud
+        # Graphics
         self.board = Board()
 
         # Loop properties
@@ -15,7 +15,6 @@ class Game:
         self.running = True
 
     def process_input(self):
-        # self.moveTankCommand = Vector2(0, 0)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
@@ -24,8 +23,13 @@ class Game:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
                     break
-                elif event.key == pygame.K_SPACE:
-                    self.board.rollDice()
+                elif event.key == pygame.K_UP:
+                    # Roll and show dice
+                    self.board.show_dice()
+                    break
+                elif event.key == pygame.K_DOWN:
+                    # Hide and delete dice
+                    self.board.hide_dice()
                     break
 
     def run(self):
