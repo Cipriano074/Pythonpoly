@@ -1,7 +1,7 @@
 from game.Dice import Dice
 
 
-class GameState():
+class GameState:
     def __init__(self):
         self.dice = None
 
