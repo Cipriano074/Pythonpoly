@@ -5,11 +5,10 @@ from game.gameState import GameState
 
 
 class Game:
-    def __init__(self):
-        pygame.init()
+    def __init__(self, game_mode):
 
         # Game state
-        self.game_state = GameState()
+        self.game_state = GameState(game_mode)
 
         # Graphics
         self.board = Board(self.game_state)
@@ -41,6 +40,7 @@ class Game:
             self.process_input()
             self.board.draw()
             self.clock.tick(60)
+        print("Close game")
 
     def button_click(self, event):
         pass
