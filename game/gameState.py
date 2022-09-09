@@ -9,7 +9,6 @@ class GameState:
         self.ai_players_count = game_mode
         self.players = self.set_players()
         self.cards = cardsList.get_cards_from_csv()
-        self.test()
         print(f'Run game with mode {self.ai_players_count}')
 
     def set_dice(self):
@@ -27,6 +26,9 @@ class GameState:
             list_of_players.append(Player(x, "AI"))
 
         return list_of_players
+
+    def turn_off_player(self, player_id):
+        self.players[player_id].set_status()
 
     def set_card_owner(self, card_id, player_id):
         self.cards[card_id].owner = player_id

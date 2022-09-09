@@ -4,6 +4,7 @@ class Player:
         self.player_id = player_id
         self.typeOfPlayer = name
         self.money = 200
+        self.status = 1
         print(f'Created a player {self.player_id},  {self.typeOfPlayer}')
 
     def __str__(self):
@@ -12,3 +13,6 @@ class Player:
 
     def update_money(self, amount):
         self.money += amount
+
+    def set_status(self):
+        self.status = 0
