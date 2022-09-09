@@ -7,7 +7,7 @@ class GameState:
     def __init__(self, game_mode):
         self.dice = None
         self.ai_players_count = game_mode
-        self.players_list = self.set_players()
+        self.players = self.set_players()
         self.cards = cardsList.get_cards_from_csv()
         self.test()
         print(f'Run game with mode {self.ai_players_count}')
@@ -28,6 +28,13 @@ class GameState:
 
         return list_of_players
 
-    def test(self):
-        card = self.cards[0]
-        print(card.name)
+    def set_card_owner(self, card_id, player_id):
+        self.cards[card_id].owner = player_id
+
+    def del_card_owner(self, card_id):
+        self.cards[card_id].owner = None
+
+    def test_setting_cards(self):
+        self.set_card_owner(0, 0)
+        self.del_card_owner(card_id=0)
+        print(self.cards[0])

@@ -10,24 +10,21 @@ class Card:
     basic_buy_price: int = 0
     rent_price: int = 0
     build_price: int = 0
-    __position: tuple = None
+    position: tuple = None
     __owner: int = None
 
     @property
-    def owner(self, new_owner: int):
-        self.__owner = new_owner
-
-    @property
-    def position(self, new_position: tuple):
-        self.__position = new_position
-
-    @owner.getter
     def owner(self):
         return self.__owner
 
-    @position.getter
-    def position(self):
-        return self.__position
+    @owner.setter
+    def owner(self, new_owner: int):
+        if self.__owner is None:
+            self.__owner = new_owner
+            print(f'The new owner of card {self.name}, is Player {self.__owner}')
+        else:
+            self.__owner = new_owner
+            print(f"There is no owner of card {self.name}")
 
     def __str__(self):
         return f"""Card {self.card_id}: {self.card_type}, {self.name}. The base price is {self.basic_buy_price}.
