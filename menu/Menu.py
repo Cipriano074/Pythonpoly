@@ -22,8 +22,17 @@ class Menu:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
                     break
-                elif event.key == pygame.K_DOWN:
+                # Choose qty of AI players
+                elif event.key == pygame.K_1:
                     self.state = 1
+                    self.running = False
+                    break
+                elif event.key == pygame.K_2:
+                    self.state = 2
+                    self.running = False
+                    break
+                elif event.key == pygame.K_3:
+                    self.state = 3
                     self.running = False
                     break
 
