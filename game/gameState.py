@@ -9,7 +9,7 @@ class GameState:
         self.ai_players_count = game_mode
         self.players = self.set_players()
         self.cards = cardsList.get_cards_from_csv()
-        self.text = ""
+        self.text = "Witaj w grze"
         print(f'Run game with mode {self.ai_players_count}')
 
     def set_dice(self):

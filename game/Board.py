@@ -15,8 +15,28 @@ class Board:
     def draw(self):
         self.screen.blit(self.background_image, (0, 0))
         self.draw_dice()
-        self.draw_text(pos=(810, 245), text=self.game_state.text)
+        # Draw text in main window
+        self.draw_text(pos=(810, 245), text=self.game_state.text,
+                       font=pygame.font.SysFont('monotxtiv25', 12, bold=True))
+        # Draw text for players
+        self.drawer_players_info()
+
         pygame.display.flip()
+
+    def drawer_players_info(self):
+        h, w = 805, 110
+        for player in self.game_state.players:
+            player_info = ""
+            if player.status is 1:
+                player_info = f"""Żyje
+                \nMa {player.money} $.
+               \n"""
+                # TODO: Tu powinny wyświetlać się też jakie ma karty
+            else:
+                player_info = f"""Status: nieżyje"""
+
+            self.draw_text(pos=(h, w), text=player_info, font=pygame.font.SysFont('monotxtiv25', 10, bold=True))
+            h += 120
 
     def draw_dice(self):
         # Show dice if generated
@@ -25,8 +45,7 @@ class Board:
             self.window.blit(*dice1)
             self.window.blit(*dice2)
 
-    def draw_text(self, pos, text):
-        font = pygame.font.SysFont('monotxtiv25', 12, bold=True)
+    def draw_text(self, pos, text, font):
         words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
         space = font.size(' ')[0]  # The width of a space.
         max_width, max_height = self.window.get_size()
