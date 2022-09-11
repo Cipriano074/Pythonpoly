@@ -27,9 +27,9 @@ class Board:
         h, w = 805, 110
         for player in self.game_state.players:
             player_info = ""
-            if player.status is 1:
+            if player.status:
                 player_info = f"""Żyje
-                \nMa {player.money} $.
+                \nMa {player.money} zł
                \n"""
                 # TODO: Tu powinny wyświetlać się też jakie ma karty
             else:
