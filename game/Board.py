@@ -19,7 +19,7 @@ class Board:
         self.draw_text(pos=(810, 245), text=self.game_state.text,
                        font=pygame.font.SysFont('monotxtiv25', 12, bold=True))
         # Draw text for players
-        self.drawer_players_info()
+        self.draw_players_info()
 
         pygame.display.flip()
 
