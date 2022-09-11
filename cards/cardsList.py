@@ -15,7 +15,9 @@ def get_cards_from_csv():
                 name=attributes["name"],
                 basic_buy_price=attributes["basic_buy_price"],
                 rent_price=attributes["rent_price"],
-                build_price=attributes["build_price"]
+                build_price=attributes["build_price"],
+                position_h=attributes["card_h"],
+                position_w=attributes["card_w"]
             )
         )
     return cards_list

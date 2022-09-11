@@ -10,7 +10,8 @@ class Card:
     basic_buy_price: int = 0
     rent_price: int = 0
     build_price: int = 0
-    position: tuple = None
+    position_h: int = 0
+    position_w: int = 0
     __owner: int = None
 
     @property

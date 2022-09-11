@@ -1,3 +1,5 @@
+from pygame import Vector2
+
 from cards import cardsList
 from game import Dice
 from game.Player import Player
@@ -47,3 +49,7 @@ class GameState:
             self.text = ""
         else:
             self.text = "{} {}".format(self.text, add_text)
+
+    def move_player_to_card(self, player_id, card_id):
+        card_position = Vector2(self.cards[card_id].position_h, self.cards[card_id].position_w)
+        self.players[player_id].move_pawn(card_position)

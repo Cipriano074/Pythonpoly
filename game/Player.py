@@ -1,3 +1,10 @@
+import pygame
+from pygame import Vector2
+from pygame.rect import Rect
+
+import constants
+
+
 class Player:
 
     def __init__(self, player_id, name):
@@ -5,6 +12,8 @@ class Player:
         self.typeOfPlayer = name
         self.money = 200
         self.status = 1
+        self.base_position = self.set_base_position()
+        self.pawn_texture = self.load_pawn_texture()
         print(f'Created a player {self.player_id},  {self.typeOfPlayer}')
 
     def __str__(self):
@@ -16,3 +25,27 @@ class Player:
 
     def set_status(self):
         self.status = 0
+
+    def set_base_position(self):
+        position = Vector2(0, 0)
+        if self.player_id == 1:
+            position += (30, 0)
+        elif self.player_id == 2:
+            position += (0, 30)
+        elif self.player_id == 3:
+            position += (30, 30)
+        return position
+
+    def load_pawn_texture(self):
+
+        file = ("./img/pawn_", str(self.player_id), ".png")
+        return pygame.image.load("".join(file)).convert()
+
+    def load_pawn_rect(self):
+
+        pawn_rect = Rect(self.base_position.x, self.base_position.y, constants.PAWN_SIZE.x, constants.PAWN_SIZE.y)
+
+        return self.pawn_texture, pawn_rect
+
+    def move_pawn(self, card_position):
+        self.base_position += card_position

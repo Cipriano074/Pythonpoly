@@ -20,6 +20,8 @@ class Board:
                        font=pygame.font.SysFont('monotxtiv25', 12, bold=True))
         # Draw text for players
         self.draw_players_info()
+        # Draw pawns
+        self.draw_pawns()
 
         pygame.display.flip()
 
@@ -61,3 +63,9 @@ class Board:
                 x += word_width + space
             x = pos[0]  # Reset the x.
             y += word_height  # Start on new row.
+
+    def draw_pawns(self):
+        for player in self.game_state.players:
+            if player.status:
+                pawn = player.load_pawn_rect()
+                self.window.blit(*pawn)
