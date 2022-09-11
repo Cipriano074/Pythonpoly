@@ -12,6 +12,7 @@ class GameState:
         self.players = self.set_players()
         self.cards = cardsList.get_cards_from_csv()
         self.text = "Witaj w grze"
+        self.move_players_to_start()
         print(f'Run game with mode {self.ai_players_count}')
 
     def set_dice(self):
@@ -39,11 +40,6 @@ class GameState:
     def del_card_owner(self, card_id):
         self.cards[card_id].owner = None
 
-    def test_setting_cards(self):
-        self.set_card_owner(0, 0)
-        self.del_card_owner(card_id=0)
-        print(self.cards[0])
-
     def update_text(self, add_text="Remove"):
         if add_text == "Remove":
             self.text = ""
@@ -53,3 +49,7 @@ class GameState:
     def move_player_to_card(self, player_id, card_id):
         card_position = Vector2(self.cards[card_id].position_h, self.cards[card_id].position_w)
         self.players[player_id].move_pawn(card_position)
+
+    def move_players_to_start(self):
+        for player in self.players:
+            self.move_player_to_card(player.player_id, 28)
