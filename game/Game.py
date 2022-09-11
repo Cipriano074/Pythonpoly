@@ -34,6 +34,10 @@ class Game:
                     # Delete dice
                     self.game_state.del_dice()
                     break
+                elif event.key == pygame.K_1:
+                    # Update text
+                    self.game_state.update_text(add_text="trpspapa")
+                    break
 
     def run(self):
         while self.running:

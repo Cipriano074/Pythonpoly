@@ -9,6 +9,7 @@ class GameState:
         self.ai_players_count = game_mode
         self.players = self.set_players()
         self.cards = cardsList.get_cards_from_csv()
+        self.text = ""
         print(f'Run game with mode {self.ai_players_count}')
 
     def set_dice(self):
@@ -40,3 +41,9 @@ class GameState:
         self.set_card_owner(0, 0)
         self.del_card_owner(card_id=0)
         print(self.cards[0])
+
+    def update_text(self, add_text="Remove"):
+        if add_text == "Remove":
+            self.text = ""
+        else:
+            self.text = "{} {}".format(self.text, add_text)

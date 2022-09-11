@@ -5,3 +5,4 @@ GAME_NAME = "Monopoly"
 DICE_SIZE = Vector2(40, 40)
 DICE1_POSITION = Vector2(973, 569)
 DICE2_POSITION = Vector2(1039, 569)
+BLACK = (0, 0, 0)
