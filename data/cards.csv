@@ -1,6 +1,6 @@
 card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price,card_h,card_w
-0,Street,BROWN,Django,60,2,50,0,0
-1,Street,BROWN,Flask,60,4,50,0,0
+0,Street,BROWN,Django,60,2,50,30,625
+1,Street,BROWN,Flask,60,4,50,30,625
 2,Street,LIGHT_BLUE,Dash,100,6,50,0,0
 3,Street,LIGHT_BLUE,MatPlotLib,100,6,50,0,0
 4,Street,LIGHT_BLUE,seaborn ,120,8,50,0,0

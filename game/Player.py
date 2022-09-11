@@ -13,6 +13,7 @@ class Player:
         self.money = 200
         self.status = 1
         self.base_position = self.set_base_position()
+        self.current_position = self.base_position
         self.pawn_texture = self.load_pawn_texture()
         print(f'Created a player {self.player_id},  {self.typeOfPlayer}')
 
@@ -43,9 +44,9 @@ class Player:
 
     def load_pawn_rect(self):
 
-        pawn_rect = Rect(self.base_position.x, self.base_position.y, constants.PAWN_SIZE.x, constants.PAWN_SIZE.y)
+        pawn_rect = Rect(self.current_position.x, self.current_position.y, constants.PAWN_SIZE.x, constants.PAWN_SIZE.y)
 
         return self.pawn_texture, pawn_rect
 
     def move_pawn(self, card_position):
-        self.base_position += card_position
+        self.current_position = self.base_position + card_position

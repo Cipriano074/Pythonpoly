@@ -2,6 +2,7 @@ import pygame
 
 from game import Board
 from game.gameState import GameState
+from game.round import Round
 
 
 class Game:
@@ -12,6 +13,9 @@ class Game:
 
         # Graphics
         self.board = Board(self.game_state)
+
+        # Round
+        self.round = Round()
 
         # Loop properties
         self.clock = pygame.time.Clock()
@@ -40,12 +44,25 @@ class Game:
                     break
                 elif event.key == pygame.K_2:
                     # Move pawn 0 to start
-                    self.game_state.move_player_to_card(player_id=0, card_id=28)
+                    self.game_state.move_player_to_card(player_id=0, card_id=0)
+                elif event.key == pygame.K_3:
+                    # Move pawn 0 to start
+                    self.round.id += 1
+                    self.game_state.move_player_to_card(player_id=0, card_id=self.round.id)
                     break
+
+    def process_round(self):
+        if self.round.id == 0:
+            self.game_state.move_players_to_start()
+        else:
+            self.game_state.update_text(add_text="Remove")
+            self.game_state.update_text(add_text=f"Runda: {self.round.id}")
+            self.clock.tick(120)
 
     def run(self):
         while self.running:
             self.process_input()
+            self.process_round()
             self.board.draw()
             self.clock.tick(60)
         print("Close game")

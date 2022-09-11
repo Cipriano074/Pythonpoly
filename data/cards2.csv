@@ -1,0 +1,6 @@
+card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price,card_h,card_w
+0,Start,Start,Start,0,0,0,30,700
+1,Street,BROWN,Flask,60,4,50,25,625
+2,Chance, Chance, Chance,0,0,0,25,560
+3,Street,BROWN,Django,60,2,50,25,490
+4,Chance, Chance, Chance,0,0,0,25,430

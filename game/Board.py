@@ -21,7 +21,7 @@ class Board:
         # Draw text for players
         self.draw_players_info()
         # Draw pawns
-        self.draw_pawns()
+        self.draw_pawns(self.game_state.players)
 
         pygame.display.flip()
 
@@ -64,8 +64,8 @@ class Board:
             x = pos[0]  # Reset the x.
             y += word_height  # Start on new row.
 
-    def draw_pawns(self):
-        for player in self.game_state.players:
+    def draw_pawns(self, players):
+        for player in players:
             if player.status:
                 pawn = player.load_pawn_rect()
                 self.window.blit(*pawn)
