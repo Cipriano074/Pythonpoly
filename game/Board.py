@@ -23,7 +23,7 @@ class Board:
 
         pygame.display.flip()
 
-    def drawer_players_info(self):
+    def draw_players_info(self):
         h, w = 805, 110
         for player in self.game_state.players:
             player_info = ""
