@@ -1,5 +1,5 @@
 from cards import Card
 
 
-class Start(Card):
+class ActionCard(Card):
     pass

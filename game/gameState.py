@@ -51,4 +51,4 @@ class GameState:
 
     def move_players_to_start(self):
         for player in self.players:
-            self.move_player_to_card(player.player_id, 28)
+            self.move_player_to_card(player.player_id, 0)

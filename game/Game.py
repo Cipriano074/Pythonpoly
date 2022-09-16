@@ -48,7 +48,10 @@ class Game:
                 elif event.key == pygame.K_3:
                     # Move pawn 0 to start
                     self.round.id += 1
-                    self.game_state.move_player_to_card(player_id=0, card_id=self.round.id)
+                    self.game_state.move_player_to_card(player_id=0, card_id=self.round.id + 30)
+                    self.game_state.move_player_to_card(player_id=1, card_id=self.round.id + 30)
+                    self.game_state.move_player_to_card(player_id=2, card_id=self.round.id + 30)
+                    self.game_state.move_player_to_card(player_id=3, card_id=self.round.id + 30)
                     break
 
     def process_round(self):
