@@ -13,6 +13,7 @@ class Card:
     position_h: int = 0
     position_w: int = 0
     __owner: int = None
+    buildings: int = None
 
     @property
     def owner(self):
@@ -22,6 +23,7 @@ class Card:
     def owner(self, new_owner: int):
         if self.__owner is None:
             self.__owner = new_owner
+            self.buildings = 0
             print(f'The new owner of card {self.name}, is Player {self.__owner}')
         else:
             self.__owner = new_owner

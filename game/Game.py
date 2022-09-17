@@ -30,6 +30,8 @@ class Game:
                     if action == constants.BUTTON_ROLL_DICE_ACTION:
                         # Rolling dice on button click
                         self.roll_dice(player_id=self.game_state.current_player_id)
+                        # Processing events after the player moved to the new card
+                        self.game_state.process_card_event()
                     if action == constants.BUTTON_END_ROUND_ACTION:
                         # Ending round and deleting dice on button click
                         self.game_state.end_round()
@@ -62,8 +64,6 @@ class Game:
             dice = self.game_state.dice
             dices_number += dice.dice1_number + dice.dice2_number
             if dices_number == 24:
-                self.game_state.update_text(add_text="Znowu wyrzuciłeś 12, trafiasz do więzienia")
-                # TODO go to jail
                 new_card_number = 10
             else:
                 new_card_number += dices_number
@@ -72,6 +72,7 @@ class Game:
 
         if new_card_number > 28:
             new_card_number -= 28
+            self.game_state.players[player_id].update_money(200)
 
         self.game_state.update_text(
             add_text=f"Wyrzuciłeś {dices_number}, przenosimy cię na kartę {self.game_state.cards[new_card_number].name}")

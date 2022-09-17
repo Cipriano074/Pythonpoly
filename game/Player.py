@@ -12,6 +12,7 @@ class Player:
         self.typeOfPlayer = name
         self.money = 200
         self.status = 1
+        self.inJail = False
         self.base_position = self.set_base_position()
         self.current_position = self.base_position
         self.current_card = 0
@@ -52,3 +53,5 @@ class Player:
     def move_pawn(self, card_position, card_id):
         self.current_position = self.base_position + card_position
         self.current_card = card_id
+
+
