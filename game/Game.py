@@ -54,7 +54,7 @@ class Game:
         dice = self.game_state.dice
         dices_number = dice.dice2_number + dice.dice1_number
         new_card_number = self.game_state.players[player_id].current_card
-        self.game_state.update_text(add_text=f"Byłeś na karcie {new_card_number}")
+        self.game_state.update_text(add_text=f"Byłeś na karcie {self.game_state.cards[new_card_number].name}")
         if dices_number == 12:
             self.game_state.update_text(add_text="Wyrzuciłeś 12, następny rzut nastąpi automatycznie")
             self.game_state.del_dice()
@@ -73,6 +73,7 @@ class Game:
         if new_card_number > 28:
             new_card_number -= 28
 
-        self.game_state.update_text(add_text=f"Wyrzuciłeś {dices_number}, przenosimy cię na kartę {new_card_number}")
+        self.game_state.update_text(
+            add_text=f"Wyrzuciłeś {dices_number}, przenosimy cię na kartę {self.game_state.cards[new_card_number].name}")
 
         self.game_state.move_player_to_card(player_id=player_id, card_id=new_card_number)
