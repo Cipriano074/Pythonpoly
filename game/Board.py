@@ -1,6 +1,7 @@
 import pygame
 
 import constants
+from game.button import ButtonRollDice, ButtonEndRound
 
 
 class Board:
@@ -9,6 +10,9 @@ class Board:
         pygame.display.set_caption(constants.GAME_NAME)
         self.screen = pygame.display.get_surface()
         self.background_image = pygame.image.load("./img/background.png").convert()
+
+        self.buttonRollDice = ButtonRollDice()
+        self.buttonEndRound = ButtonEndRound()
 
         self.game_state = game_state
 
@@ -22,6 +26,8 @@ class Board:
         self.draw_players_info()
         # Draw pawns
         self.draw_pawns(self.game_state.players)
+        # Draw all the buttons
+        self.draw_buttons()
 
         pygame.display.flip()
 
@@ -69,3 +75,20 @@ class Board:
             if player.status:
                 pawn = player.load_pawn_rect()
                 self.window.blit(*pawn)
+
+    def draw_buttons(self):
+        self.buttonRollDice.draw(self.screen)
+        self.buttonEndRound.draw(self.screen)
+
+    def check_click(self, pos):
+        x, y = pos
+        if self.buttonRollDice.clicked(x, y):
+            self.buttonRollDice.redraw_clicked()
+            return constants.BUTTON_ROLL_DICE_ACTION
+        if self.buttonEndRound.clicked(x, y):
+            self.buttonEndRound.redraw_clicked()
+            return constants.BUTTON_END_ROUND_ACTION
+
+    def redraw_buttons_not_clicked(self):
+        self.buttonRollDice.redraw_not_clicked()
+        self.buttonEndRound.redraw_not_clicked()

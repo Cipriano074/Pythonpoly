@@ -1,8 +1,8 @@
 import pygame
 
+import constants
 from game import Board
 from game.gameState import GameState
-from game.round import Round
 
 
 class Game:
@@ -10,65 +10,69 @@ class Game:
 
         # Game state
         self.game_state = GameState(game_mode)
+        self.game_state.move_players_to_start()
 
         # Graphics
         self.board = Board(self.game_state)
-
-        # Round
-        self.round = Round()
 
         # Loop properties
         self.clock = pygame.time.Clock()
         self.running = True
 
-    def process_input(self):
+    def process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
                 break
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    action = self.board.check_click(event.pos)
+                    if action == constants.BUTTON_ROLL_DICE_ACTION:
+                        # Rolling dice on button click
+                        self.roll_dice(player_id=self.game_state.current_player_id)
+                    if action == constants.BUTTON_END_ROUND_ACTION:
+                        # Ending round and deleting dice on button click
+                        self.game_state.end_round()
+                        self.game_state.del_dice()
+            elif event.type == pygame.MOUSEBUTTONUP:
+                self.board.redraw_buttons_not_clicked()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
                     break
-                elif event.key == pygame.K_UP:
-                    # Set dice
-                    self.game_state.set_dice()
-                    break
-                elif event.key == pygame.K_DOWN:
-                    # Delete dice
-                    self.game_state.del_dice()
-                    break
-                elif event.key == pygame.K_1:
-                    # Update text
-                    self.game_state.update_text(add_text="trpspapa")
-                    break
-                elif event.key == pygame.K_2:
-                    # Move pawn 0 to start
-                    self.game_state.move_player_to_card(player_id=0, card_id=0)
-                elif event.key == pygame.K_3:
-                    # Move pawn 0 to start
-                    self.round.id += 1
-                    self.game_state.move_player_to_card(player_id=0, card_id=self.round.id + 30)
-                    self.game_state.move_player_to_card(player_id=1, card_id=self.round.id + 30)
-                    self.game_state.move_player_to_card(player_id=2, card_id=self.round.id + 30)
-                    self.game_state.move_player_to_card(player_id=3, card_id=self.round.id + 30)
-                    break
-
-    def process_round(self):
-        if self.round.id == 0:
-            self.game_state.move_players_to_start()
-        else:
-            self.game_state.update_text(add_text="Remove")
-            self.game_state.update_text(add_text=f"Runda: {self.round.id}")
-            self.clock.tick(120)
 
     def run(self):
         while self.running:
-            self.process_input()
-            self.process_round()
+            self.process_events()
             self.board.draw()
+            # self.process_round()
             self.clock.tick(60)
         print("Close game")
 
-    def button_click(self, event):
-        pass
+    def roll_dice(self, player_id):
+        self.game_state.set_dice()
+        dice = self.game_state.dice
+        dices_number = dice.dice2_number + dice.dice1_number
+        new_card_number = self.game_state.players[player_id].current_card
+        self.game_state.update_text(add_text=f"Byłeś na karcie {new_card_number}")
+        if dices_number == 12:
+            self.game_state.update_text(add_text="Wyrzuciłeś 12, następny rzut nastąpi automatycznie")
+            self.game_state.del_dice()
+            self.game_state.set_dice()
+            dice = self.game_state.dice
+            dices_number += dice.dice1_number + dice.dice2_number
+            if dices_number == 24:
+                self.game_state.update_text(add_text="Znowu wyrzuciłeś 12, trafiasz do więzienia")
+                # TODO go to jail
+                new_card_number = 10
+            else:
+                new_card_number += dices_number
+        else:
+            new_card_number += dices_number
+
+        if new_card_number > 28:
+            new_card_number -= 28
+
+        self.game_state.update_text(add_text=f"Wyrzuciłeś {dices_number}, przenosimy cię na kartę {new_card_number}")
+
+        self.game_state.move_player_to_card(player_id=player_id, card_id=new_card_number)

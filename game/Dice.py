@@ -6,15 +6,18 @@ from pygame.rect import Rect
 import constants as c
 
 
+def roll_dice():
+    return random.randint(1, 6), random.randint(1, 6)
+
+
 class Dice:
     def __init__(self):
+        self.dice1_number, self.dice2_number = roll_dice()
         self.dice1Texture, self.dice2Texture = self.load_dice()
 
-    @staticmethod
-    def load_dice():
-        dice1_number, dice2_number = random.randint(1, 6), random.randint(1, 6)
-        seq1 = ("./img/dice_", str(dice1_number), ".png")
-        seq2 = ("./img/dice_", str(dice2_number), ".png")
+    def load_dice(self):
+        seq1 = ("./img/dice_", str(self.dice1_number), ".png")
+        seq2 = ("./img/dice_", str(self.dice2_number), ".png")
 
         return pygame.image.load("".join(seq1)).convert(), pygame.image.load("".join(seq2)).convert()
 
