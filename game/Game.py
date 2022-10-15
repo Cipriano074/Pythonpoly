@@ -29,12 +29,13 @@ class Game:
                     action = self.board.check_click(event.pos)
                     if action == constants.BUTTON_ROLL_DICE_ACTION:
                         # Rolling dice on button click
-                        self.roll_dice(player_id=self.game_state.current_player_id)
+                        self.game_state.roll_dice()
                         # Processing events after the player moved to the new card
                         self.game_state.process_card_event()
                     if action == constants.BUTTON_END_ROUND_ACTION:
                         # Ending round and deleting dice on button click
-                        self.game_state.end_round()
+                        self.game_state.update_text(add_text="Remove")
+                        self.game_state.start_next_round()
                         self.game_state.del_dice()
             elif event.type == pygame.MOUSEBUTTONUP:
                 self.board.redraw_buttons_not_clicked()
@@ -47,34 +48,5 @@ class Game:
         while self.running:
             self.process_events()
             self.board.draw()
-            # self.process_round()
             self.clock.tick(60)
         print("Close game")
-
-    def roll_dice(self, player_id):
-        self.game_state.set_dice()
-        dice = self.game_state.dice
-        dices_number = dice.dice2_number + dice.dice1_number
-        new_card_number = self.game_state.players[player_id].current_card
-        self.game_state.update_text(add_text=f"Byłeś na karcie {self.game_state.cards[new_card_number].name}")
-        if dices_number == 12:
-            self.game_state.update_text(add_text="Wyrzuciłeś 12, następny rzut nastąpi automatycznie")
-            self.game_state.del_dice()
-            self.game_state.set_dice()
-            dice = self.game_state.dice
-            dices_number += dice.dice1_number + dice.dice2_number
-            if dices_number == 24:
-                new_card_number = 10
-            else:
-                new_card_number += dices_number
-        else:
-            new_card_number += dices_number
-
-        if new_card_number > 28:
-            new_card_number -= 28
-            self.game_state.players[player_id].update_money(200)
-
-        self.game_state.update_text(
-            add_text=f"Wyrzuciłeś {dices_number}, przenosimy cię na kartę {self.game_state.cards[new_card_number].name}")
-
-        self.game_state.move_player_to_card(player_id=player_id, card_id=new_card_number)

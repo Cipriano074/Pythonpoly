@@ -14,7 +14,7 @@ BUTTON_ROLL_DICE_ACTION = "set_dice"
 BUTTON_END_ROUND_POSITION = Vector2(969, 687)
 BUTTON_END_ROUND_ACTION = "end_round"
 
-TEXT_START = f"Witaj w grze!\nRozpoczynamy na starcie.\nKażdy z graczy ma po 200 zł w banku."
+TEXT_START = f"Witaj w grze!\nRozpoczynamy na starcie.\nKażdy z graczy ma po 200 zł w banku. Wcisnij KONIEC TURY aby rozpocząc"
 
 
 def get_path(relative_path=""):

@@ -77,8 +77,10 @@ class Board:
                 self.window.blit(*pawn)
 
     def draw_buttons(self):
-        self.buttonRollDice.draw(self.screen)
-        self.buttonEndRound.draw(self.screen)
+        if self.game_state.button_roll_dice_state:
+            self.buttonRollDice.draw(self.screen)
+        if self.game_state.button_end_round_state:
+            self.buttonEndRound.draw(self.screen)
 
     def check_click(self, pos):
         x, y = pos
