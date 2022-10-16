@@ -1,7 +1,7 @@
 chance_id,chance_text,chance_prize
 1,Idź do więzienia,jail
 2,Zapłać za obiad 50 zł,pay_50
-3,Fundusz wyjazdowy 250 zł,get_250
+3,Premia na wakacje 250 zł,get_250
 4,Zwrot za obiad 50 zł,get_50
 5,Premia w pracy 250 zł,get_250
 
@@ -11,7 +11,7 @@ chance_id,chance_text,chance_prize
 9,Zapłać za obiad 50 zł,pay_50
 10,Zwrot za obiad 50 zł,get_50
 11,Zwrot za obiad 50 zł,get_50
-12,Premia w pracy 250 zł,get_250
+12,Premia w pracy 150 zł,get_150
 13,Mandat za parkowanie 250 zł,pay_250
 14,Otrzymałes prezent na święta 50 zł,get_50
 15,Wygrana zdrapka 50 zł,get_50

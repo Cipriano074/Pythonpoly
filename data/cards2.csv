@@ -4,7 +4,7 @@ card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price,card_h,
 2,ActionCard,Chance,Szansa,0,0,0,20,550
 3,Street,BROWN,Django,60,2,50,20,490
 4,ActionCard,Chance,Szansa,0,0,0,20,420
-5,Company,N/A,Spotify,200,25,200,20,360
+5,Company,N/A,Spotify,200,100,200,20,360
 6,Street,LIGHT_BLUE,seaborn ,120,8,50,20,300
 7,ActionCard,Chance,Szansa,0,0,0,20,230
 8,Street,LIGHT_BLUE,MatPlotLib,100,6,50,20,170
@@ -14,7 +14,7 @@ card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price,card_h,
 12,ActionCard,Chance,Szansa,150,4,10,170,20
 13,Street,PINK,Ansible,140,10,100,230,20
 14,Street,PINK,Fabric ,140,10,100,300,20
-15,Company,N/A,Netflix,200,25,200,360,20
+15,Company,N/A,Netflix,200,100,200,360,20
 16,Street,ORANGE,pytype ,200,16,100,420,20
 17,ActionCard,Chance,Szansa,0,0,0,490,20
 18,Street,ORANGE,coala ,180,14,100,550,20
@@ -24,7 +24,7 @@ card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price,card_h,
 22,ActionCard,Chance,Szansa,0,0,0,700,165
 23,Street,RED,Selenium,220,18,150,700,230
 24,Street,RED,pytest,220,18,150,700,295
-25,Company,N/A,Reddit,200,25,200,700,360
+25,Company,N/A,Reddit,200,100,200,700,360
 26,Street,YELLOW,SciPy,280,24,150,700,425
 27,Street,YELLOW,Pandas,260,22,150,700,490
 28,ActionCard,Chance,Szansa,150,4,10,700,555
@@ -34,7 +34,7 @@ card_id,class_type,card_type,name,basic_buy_price,rent_price,build_price,card_h,
 32,Street,GREEN,PyOpenGL ,300,26,200,550,700
 33,ActionCard,Chance,Szansa,0,0,0,490,700
 34,Street,GREEN,Arcade ,300,26,200,425,700
-35,Company,N/A,Google,200,25,200,360,700
+35,Company,N/A,Google,200,100,200,360,700
 36,ActionCard,Chance,Szansa,0,0,0,295,700
 37,Street,DARK_BLUE,TensorFlow,400,50,200,230,700
 38,ActionCard,Chance,Szansa,0,0,0,165,700

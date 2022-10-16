@@ -1,17 +1,11 @@
-import time
-from random import random
-
 from pygame import Vector2
 
 import constants
-from cards import cardsList
+from cards import cardsList, del_ownership_from_cards
 from chances.chances import get_random_card, get_chances_from_csv
 from game import Dice
 from game.AI import AI
 from game.Player import Player
-
-
-
 
 
 class GameState:
@@ -48,10 +42,6 @@ class GameState:
 
     def set_card_owner(self, card_id, player_id):
         self.cards[card_id].owner = player_id
-
-    def del_card_owner(self, card_id):
-        self.cards[card_id].owner = None
-        self.cards[card_id].buildings = None
 
     def update_text(self, add_text="Remove"):
         if add_text == "Remove":
@@ -106,6 +96,7 @@ class GameState:
                 break
 
         return new_id
+
     def go_jail(self, player_id):
         self.move_player_to_card(player_id, 10)
         self.players[self.current_player_id].inJail = True
@@ -131,26 +122,34 @@ class GameState:
                 text = "Trafiłeś na kartę cofającą do więzienia \n"
                 self.go_jail(player_id)
         elif card_type == "Street":
-            text = f"Jesteś na karcie {card_name}.\n"
-            # TODO: event for street
+            self.check_ownership(self.cards[card_id])
+
         elif card_type == "Company":
-            text = f"Jesteś na karcie firmy {card_name}.\n"
-            # TODO: event for Company
+            self.check_ownership(self.cards[card_id])
         self.update_text(add_text=text)
         if self.players[self.current_player_id].typeOfPlayer == "human":
             self.button_end_round_state = True
             self.button_roll_dice_state = False
 
-    def check_ownership(self, card_id):
+    def check_ownership(self, card):
 
-        if self.cards[card_id].owner is None:
+        player = self.players[self.current_player_id]
+
+        if card.owner is None:
             self.update_text(add_text=f"Karta jest dostępna do zakupu.\n")
-            # buy_card() - there are two types of cards : street and company
-        elif self.cards[card_id].owner != self.current_player_id:
-            self.update_text(add_text=f"Musisz zapłacić graczowi.\n")
-            # pay_to(owner)  - there are two types of cards : street and company
+            is_card_bought, text = player.buy_card(card)
+            self.update_text(add_text=text)
+            if is_card_bought:
+                self.set_card_owner(card.card_id, player.player_id)
+        elif card.owner != self.current_player_id:
+            charge = card.amount_to_pay()
+            self.update_text(add_text=f"Musisz zapłacić graczowi {card.owner + 1}: {charge} zł. \n")
+            self.pay(charge)
+            self.players[card.owner].update_money(charge)
+        elif card.owner == self.current_player_id:
+            self.update_text(add_text=f"{card.name} należy do ciebie.\n")
         else:
-            self.update_text(add_text=f"Karta należy do ciebie.\n")
+            self.update_text(add_text="ERROR!!")
 
     def roll_dice(self):
         player_id = self.current_player_id
@@ -192,9 +191,15 @@ class GameState:
         elif "pay" in card.chance_prize:
             prize = card.chance_prize
             prize = prize.replace("pay_", "")
-            self.players[self.current_player_id].update_money(-int(prize))
-            #TODO: what if the player needs to pay more than in bank
+            self.pay(int(prize))
         elif "get" in card.chance_prize:
             prize = card.chance_prize
             prize = prize.replace("get_", "")
             self.players[self.current_player_id].update_money(int(prize))
+
+    def pay(self, amount):
+        self.players[self.current_player_id].update_money(-amount)
+        if self.players[self.current_player_id].status == 0:
+            self.cards = del_ownership_from_cards(self.cards, self.current_player_id)
+            self.update_text(
+                add_text=f"Straciłeś pieniądze. Umierasz.\n")

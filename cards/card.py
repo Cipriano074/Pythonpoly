@@ -29,6 +29,19 @@ class Card:
             self.__owner = new_owner
             print(f"There is no owner of card {self.name}")
 
+    def amount_to_pay(self):
+        charge = 0
+        if self.class_type == "Street":
+            charge = self.rent_price + (self.rent_price*self.buildings)
+        elif self.class_type == "Company":
+            charge = self.rent_price
+        return charge
+
+    def del_owner(self):
+        self.__owner = None
+        self.buildings = 0
+        print(f"There is no owner of card {self.name}")
+
     def __str__(self):
         return f"""Card {self.card_id}: {self.card_type}, {self.name}. The base price is {self.basic_buy_price}.
         The owner is {self.__owner}. \n"""

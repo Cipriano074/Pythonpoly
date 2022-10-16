@@ -22,3 +22,14 @@ def get_cards_from_csv():
             )
         )
     return cards_list
+
+
+def del_ownership_from_cards(cards_list, player_id):
+    new_cards_list = []
+    print(f'The player {player_id} is dead. Del all of his cards')
+    for card in cards_list:
+        if card.owner == player_id:
+            card.del_owner()
+        new_cards_list.append(card)
+
+    return new_cards_list

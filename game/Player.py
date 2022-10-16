@@ -25,6 +25,8 @@ class Player:
 
     def update_money(self, amount):
         self.money += amount
+        if self.money < 0:
+            self.set_status()
 
     def set_status(self):
         self.status = 0
@@ -54,4 +56,12 @@ class Player:
         self.current_position = self.base_position + card_position
         self.current_card = card_id
 
-
+    def buy_card(self, card):
+        buy = False
+        text = f"Nie kupiłeś karty {card.name}"
+        #TODO: make it a button
+        if self.money >= card.basic_buy_price:
+            self.money -= card.basic_buy_price
+            buy = True
+            text = f"Kupiłeś kartę {card.name} \n"
+        return buy, text

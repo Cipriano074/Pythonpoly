@@ -20,7 +20,7 @@ class Board:
         self.screen.blit(self.background_image, (0, 0))
         self.draw_dice()
         # Draw text in main window
-        self.draw_text(pos=(810, 245), text=self.game_state.text,
+        self.draw_text(pos=(800, 235), text=self.game_state.text,
                        font=pygame.font.SysFont('monotxtiv25', 12, bold=True))
         # Draw text for players
         self.draw_players_info()
@@ -39,9 +39,8 @@ class Board:
                 player_info = f"""Żyje
                 \nMa {player.money} zł
                \n"""
-                # TODO: Tu powinny wyświetlać się też jakie ma karty
             else:
-                player_info = f"""Status: nieżyje"""
+                player_info = f"""Nieżyje"""
 
             self.draw_text(pos=(h, w), text=player_info, font=pygame.font.SysFont('monotxtiv25', 10, bold=True))
             h += 120
