@@ -1,17 +1,17 @@
 chance_id,chance_text,chance_prize
-1,Wyjście z więzienia,free_jail
-2,Zapłać za obiad – 50 zł,pay_50
-3,Fundusz wyjazdowy + 250 zł,get_250
-4,Zwrot za obiad + 50 zł,get_50
-5,Premia w pracy + 250 zł,get_250
+1,Idź do więzienia,jail
+2,Zapłać za obiad 50 zł,pay_50
+3,Fundusz wyjazdowy 250 zł,get_250
+4,Zwrot za obiad 50 zł,get_50
+5,Premia w pracy 250 zł,get_250
 
 6,Idź na start ,start
 7,Idź do więzienia,jail
-8,Kredyt hipoteczny – 100 zł za posiadłość,rent_pay
-9,Zapłata wynagrodzeń – 100 zł za gracza,gamer_pay
-10,Zapłać za czynsz – 100 zł za posiadłość,rent_pay
-11,Prezenty na święta – 100 zł za gracza,gamer_pay
-12,Idź na start ,start
-13,Wyjście z więzienia,free_jail
-14,Otrzymałes prezent na święta + 50 zł,get_50
-15,Wygrana zdrapka + 50 zł,get_50
+8,Zapłać za obiad 50 zł,pay_50
+9,Zapłać za obiad 50 zł,pay_50
+10,Zwrot za obiad 50 zł,get_50
+11,Zwrot za obiad 50 zł,get_50
+12,Premia w pracy 250 zł,get_250
+13,Mandat za parkowanie 250 zł,pay_250
+14,Otrzymałes prezent na święta 50 zł,get_50
+15,Wygrana zdrapka 50 zł,get_50

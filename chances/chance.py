@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 @dataclass
 class Chance:
     chance_id: int = None

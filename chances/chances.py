@@ -1,6 +1,9 @@
+import random
+
 import pandas as pd
 
 from chances import Chance
+
 
 def get_chances_from_csv():
     data_list = pd.read_csv("./data/chances.csv", encoding="UTF-8")
@@ -15,3 +18,7 @@ def get_chances_from_csv():
         )
     return chance_list
 
+
+def get_random_card(chancesList):
+    chance_id = random.randint(0, 14)
+    return chancesList[chance_id]
