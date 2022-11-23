@@ -47,10 +47,10 @@ class ButtonRollDice(Button):
 
     def __init__(self):
         super().__init__("img/button_roll_dice.png", "img/button_roll_dice_light.png",
-                         constants.BUTTON_ROLL_DICE_POSITION)
+                        constants.BUTTON_ROLL_DICE_POSITION)
 
 
 class ButtonEndRound(Button):
     def __init__(self):
         super().__init__("img/button_end_round.png", "img/button_end_round.png",
-                         constants.BUTTON_END_ROUND_POSITION)
+                        constants.BUTTON_END_ROUND_POSITION)

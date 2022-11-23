@@ -21,7 +21,7 @@ class Board:
         self.draw_dice()
         # Draw text in main window
         self.draw_text(pos=(800, 235), text=self.game_state.text,
-                       font=pygame.font.SysFont('monotxtiv25', 12, bold=True))
+                        font=pygame.font.SysFont('monotxtiv25', 12, bold=True))
         # Draw text for players
         self.draw_players_info()
         # Draw pawns
@@ -38,7 +38,7 @@ class Board:
             if player.status:
                 player_info = f"""Żyje
                 \nMa {player.money} zł
-               \n"""
+                \n"""
             else:
                 player_info = f"""Nieżyje"""
 
